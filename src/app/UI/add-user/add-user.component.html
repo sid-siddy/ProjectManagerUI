@@ -1,0 +1,94 @@
+
+  <div class="container">   
+    <div class="row">
+      <div class="col-md-12">
+          <label  class="control-label lblcolor" >{{Recordadded}}</label>
+      </div> 
+    </div>
+    <!-- First Name -->
+    <div class="row">
+      <div class="col-md-4">
+          <label  class="control-label">First Name:</label>
+      </div>       
+        <div class="col-md-8">
+            <input type="text" id='txtFirstName' required [(ngModel)]="item.FirstName" class="form-control input-sm txtColor" [ngModelOptions]="{standalone: true}" >
+        </div>          
+    </div>
+    <!-- Last  Name -->
+    <div class="row">
+      <div class="col-md-4">
+          <label  class="control-label">Last Name:</label>
+      </div>       
+        <div class="col-md-8">
+            <input type="text" id='txtLastName' required [(ngModel)]="item.LastName" class="form-control input-sm txtColor" [ngModelOptions]="{standalone: true}" >
+        </div>          
+    </div>    
+    <!-- Employee Id -->
+    <div class="row">
+      <div class="col-md-4">
+          <label  class="control-label">Employee Id:</label>
+      </div>       
+        <div class="col-md-8">
+            <input type="text" id='txtEmpId' required [(ngModel)]="item.EmployeeId" class="form-control input-sm txtColor" [ngModelOptions]="{standalone: true}" >
+        </div>          
+    </div>
+    <!-- Button Add and Reset-->
+    <div class="row">
+      <div class="col-md-4"></div>            
+        <div class="col-md-8">            
+            <button id="btnadd" (click)="Add()" class="buttonwidth btnAdd">Add</button>
+            <button id="btnupdate" (click)="Update()" class="buttonwidth btnupdate" style="display: none;">Update</button>
+            <button id="=btnreset"(click)="Reset()" class="buttonwidth btnreset">Reset</button>
+        </div>          
+    </div>
+    <hr class="hrcolor">
+    <div class="row">
+      <div class="col-md-3">
+        <input type="text" id='txtSearch' required [(ngModel)]="FirstName" class="form-control input-sm txtColor" (keyup) = 'Searchbyfirstname(FirstName)' [ngModelOptions]="{standalone: true}" placeholder="Search...">
+      </div>
+      <div class="col-md-1">
+        <label  class="control-label lblMargin">Sort:</label>
+      </div> 
+      <div class="col-md-3 colmidMargin">            
+        <button (click)="FirstNameClick()" class="buttonwidth">First Name</button>        
+      </div> 
+      <div class="col-md-3 colmidMargin">            
+      <button (click)="LastNameClick()" class="buttonwidth">Last Name</button> 
+      </div>
+      <div class="col-md-2 colmidMargin">    
+          <button (click)="EmployeeId()" class="buttonwidth ">Id &nbsp;&nbsp; </button>        
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <ul class="list-group col-md-12">
+        <li class="list-group-item" *ngFor ="let item of users">
+          <div class="row">
+          <div class="col-md-10">
+           <label  class="control-label form-control input-sm txtColor">{{item.FirstName}}</label>           
+          </div>
+          <div class="col-md-2">
+           <button (click)="Edit(item.UserId)" class="buttonwidth btnedit">Edit</button>
+          </div>
+          </div>
+           <!-- <br> -->
+           <div class="row">
+              <div class="col-md-10">
+               <label  class="control-label form-control input-sm txtColor">{{item.LastName}}</label>           
+              </div>
+              <div class="col-md-2">
+               <button (click)="Delete(item.UserId)" class="buttonwidth">Delete</button>
+              </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-10">
+                   <label  class="control-label form-control input-sm txtColor">{{item.EmployeeId}}</label>           
+                  </div>
+                  <div class="col-md-2">                   
+                  </div>
+                  </div>                 
+          <hr>
+        </li>
+      </ul>      
+    </div>
+  </div>

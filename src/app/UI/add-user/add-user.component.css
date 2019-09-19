@@ -1,0 +1,77 @@
+.buttonwidth{
+    margin-left:5px;
+    background-color: lightsteelblue;
+    border-radius: 3px;
+    text-align: center;
+    height: 38px;
+}
+.btnAdd{
+    margin-left: 175px;
+    width: 65px;
+}
+.btnreset{
+    margin-left: 25px;
+}
+.txtColor
+{
+    /* background-color: rgb(224, 232, 235); */
+    background-color: whitesmoke;
+}
+table>tbody>tr>td{
+    border-top:none !important;
+    padding:10px;
+}
+.container{
+    margin-left: 22px;
+    width: 550px;
+}
+ .col-md-1{
+    width:  1.333333%;
+} 
+.row{
+    padding: 10px;
+}
+.parenttask{
+    width: 289px;
+    height: 36px;    
+    padding-top: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    border-radius: 3px;
+}
+.lblcolor{
+    color: red;    
+}
+hr{
+    border-top: dotted 2px;
+}
+.hrcolor{
+    background-color: black;
+}
+.btnFirstLastId{
+    margin-left:5px;
+    /* background-color: lightsteelblue; */
+    border-radius: 3px;
+    text-align: center;
+    height: 35px;
+}
+.colmidMargin{
+    padding-right: 0px;
+}
+
+.lblMargin{
+    margin-top: 10px;
+}
+.list-group-item{
+    border: none !important;
+    padding: 0px;
+}
+.btnedit{
+    width: 60px;
+}
+.btnupdate{
+    margin-left: 172px;
+    padding-left: 6px;
+    border-left-width: 2px
+}

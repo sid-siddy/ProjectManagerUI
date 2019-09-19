@@ -1,0 +1,130 @@
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <label  class="control-label lblcolor" >{{Recordadded}}</label>
+        </div> 
+      </div>
+      <!-- project name -->
+      <div class="row">
+          <div class="col-md-3">
+              <label  class="control-label">Project:</label>
+          </div>       
+            <div class="col-md-7">
+                <input type="text" id='txtProject' readonly required [(ngModel)]="item.ProjectName" class="form-control input-sm txtColor" [ngModelOptions]="{standalone: true}">
+            </div>    
+            <div class="col-md-2">
+                <!-- <button (click)="Search()" id='btntaskprojectsearch'class="btnsearch buttonwidth">Serach</button> -->
+                <button id='btnprojectnamesearch' type="button"  class="btnsearch buttonwidth" (click)="openModal()">Search</button>
+            </div>         
+        </div>
+        <!-- TaskName -->
+        <div class="row">
+            <div class="col-md-3">
+                <label  class="control-label">Task:</label>
+            </div>       
+              <div class="col-md-9">
+                  <input type="text" id='txttask' required [(ngModel)]="item.TaskName" class="form-control input-sm txtColor" [ngModelOptions]="{standalone: true}">
+              </div>          
+          </div>
+                  <!--Model popup-->
+      <div class="backdrop" [ngStyle]="{'display':display}"></div>
+      <div class="modalfade" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title w-100" id="myModalLabel">Search</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">X</span></button>        
+            </div>
+            <div class="modal-body">
+          <form [formGroup]="logedInForm" ng-model="mydata" (ngSubmit) = "mdfLogin(logedInForm.value)"> 
+           <div>                
+              <div class="row">
+                  <div class="col s12 l6">
+                      <ngx-select-dropdown (change)="projectselection()" id="projectsearch"  [(ngModel)] ="objarray1" [options]="projects" [config]="projectconfig" ngDefaultControl [ngModelOptions]="{standalone: true}"></ngx-select-dropdown>
+                      <ngx-select-dropdown (change)="parentselection()" id="parentsearch" [(ngModel)] ="objarray2"  [options]="Parenttasks" [config]="parentconfig" ngDefaultControl [ngModelOptions]="{standalone: true}"></ngx-select-dropdown>
+                      <ngx-select-dropdown (change)="userselection()" id="usersearch" [(ngModel)] ="objarray3"  [options]="users" [config]="userconfig" ngDefaultControl [ngModelOptions]="{standalone: true}"></ngx-select-dropdown>
+                  </div>        
+              </div> 
+           </div>
+            <div>
+                <input type="submit" (click)="Submitmodal()" class="btn btn-info btn-lg" value="Submit" [disabled] = "!logedInForm.valid">
+            </div> 
+          </form>  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div>
+          <!-- Checkbox -->
+          <div class="row">
+            <div class='col-md-3'>
+            </div>
+              <div class="col-md-9">
+                  <input type="checkbox" id='txtchkbox'> Parent Task
+              </div>                                 
+            </div>
+            <!-- priority -->
+            <div class="row">
+                <div class="col-md-3">
+                    <label  class="control-label">Priority:</label>
+                </div>       
+                  <div class="col-md-9">
+                      <input type="range" id='Priority' [(ngModel)]="item.TPriority" class="form-control input-sm txtColor" min="0" max="30"  value="0" [ngModelOptions]="{standalone: true}">
+                  </div>          
+              </div>
+              <!-- ParentTask -->
+              <div class="row">
+                  <div class="col-md-3">
+                      <label  class="control-label">Parent Task:</label>
+                  </div>       
+                    <div class="col-md-7">
+                        <input type="text" readonly id='txtparent' required [(ngModel)]="item.ParentTaskName" class="form-control input-sm txtColor" [ngModelOptions]="{standalone: true}">
+                    </div>    
+                    <div class="col-md-2">
+                      <button id='btnparenttasksearch' type="button"  class="btnsearch buttonwidth" (click)="openModal()">Search</button>
+                    </div>         
+                </div>
+                <!-- StartDate -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <label  class="control-label">Start Date:</label>
+                    </div>       
+                      <div class="col-md-3 ">
+                          <input type="date" id='txtstartdate' ui-date="{dateFormat:yyyy-MM-dd}" required [(ngModel)]="item.TStartDate" class="form-control input-sm txtColor lblstartend" [ngModelOptions]="{standalone: true}">
+                          <input type="text" id='txtstartdate1' style="display: none;" required [(ngModel)]="item.TStartDate" class="form-control input-sm txtColor lblstartend" [ngModelOptions]="{standalone: true}">
+                      </div>                    
+                  <!-- EndDate -->                   
+                      <div class="col-md-3 endlen">
+                          <label  class="control-label">End Date:</label>
+                      </div>       
+                        <div class="col-md-3">
+                            <input type="date" id='txtenddate' required value ="item.TEndDate|date : 'dd/MM/yyyy'" [(ngModel)]="item.TEndDate" class="form-control input-sm txtColor lblstartend" [ngModelOptions]="{standalone: true}">
+                            <input type="text" id='txtenddate1' style="display: none;" required [(ngModel)]="item.TEndDate" class="form-control input-sm txtColor lblstartend" [ngModelOptions]="{standalone: true}">
+                        </div>          
+                    </div>
+                   
+                    <!-- User -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label  class="control-label">User:</label>
+                        </div>       
+                          <div class="col-md-7">
+                              <input type="text" readonly id='txtuser' required [(ngModel)]="item.Manager" class="form-control input-sm txtColor" [ngModelOptions]="{standalone: true}">
+                          </div>    
+                          <div class="col-md-2">
+                              <button id='btnusersearch' type="button"  class="btnsearch buttonwidth" (click)="openModal()">Search</button>
+                          </div>         
+                      </div>
+                      <!-- Buttons -->
+                      <div class="row">
+                          <div class="col-md-4"></div>            
+                            <div class="col-md-8">                                              
+                               <button id="btnadd" (click)="Add()" class="buttonwidth btnAdd">Add</button>
+                               <button id="btnupdate" (click)="Update()" class="buttonwidth btnupdate" style="display: none;">Update</button>
+                               <button id="btnreset"(click)="Reset()" class="buttonwidth btnreset">Reset</button>
+                            </div>          
+                        </div>                    
+                    </div>

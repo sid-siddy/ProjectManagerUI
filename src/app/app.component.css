@@ -1,0 +1,20 @@
+.txtcolor{
+    text-decoration:none;
+    }
+    .lftpad{
+        padding-left:25px;
+    }
+    .selected{
+        color:blue;    
+    }
+    a{
+        color: black;
+        font-size: 25px;
+    }
+    .disable{
+        display: none;
+        
+    }
+    h3{
+        color: blue
+    }

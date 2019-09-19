@@ -1,0 +1,118 @@
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <label  class="control-label lblcolor" >{{Recordadded}}</label>
+      </div> 
+    </div>
+<div class="row">
+  <div class="col-md-1">
+        <label  class="control-label">Project:</label>
+  </div>       
+  <div class="col-md-5">
+          <input type="text" id='txtProject' required [(ngModel)]="item.ProjectId" class="form-control input-sm txtColor" [ngModelOptions]="{standalone: true}">
+  </div>    
+    <div class="col-md-1">
+          <!-- <button (click)="Search()" id='btntaskprojectsearch'class="buttonwidth btnsearch">Serach</button> -->
+          <button id='btntaskmanagersearch' type="button"  class="btnsearch buttonwidth" (click)="openModal()">Search</button>
+  </div>  
+  <div class="col-md-1">
+      <label  class="control-label lblsortby">Sort by:</label>
+  </div>          
+  <div class="col-md-1">
+      <button (click)="StartDateclick()" class="buttonwidth">Start Date</button>
+  </div>         
+  <div class="col-md-1">
+      <button (click)="EndDateclick()" class="buttonwidth">End Date</button>
+  </div>         
+  <div class="col-md-1">
+      <button (click)="Priorityclick()" class="buttonwidth btnpriority">Priority</button>
+  </div>          
+  <div class="col-md-1">
+      <button (click)="Completed()" class="buttonwidth btncompleted">Completed</button>
+  </div>     
+</div>   
+        <!--Model popup-->
+        <div class="backdrop" data-toggle="modal" [ngStyle]="{'display':display}"></div>
+        <div class="modalfade" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title w-100" id="myModalLabel">Search</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">X</span></button>        
+              </div>
+              <div class="modal-body">
+            <form [formGroup]="logedInForm" ng-model="mydata" (ngSubmit) = "mdfLogin(logedInForm.value)"> 
+             <div>                
+                <div class="row">
+                    <div class="col s12 l6">
+                        <ngx-select-dropdown (change)="projectselection()" id="projectsearch" [(ngModel)] ="objarray1" [options]="projects" [config]="projectconfig" ngDefaultControl [ngModelOptions]="{standalone: true}"></ngx-select-dropdown>                                                   
+                    </div>        
+                </div> 
+             </div>
+              <div>
+                  <input type="submit" class="btn btn-info btn-lg" value="Submit" [disabled] = "!logedInForm.valid">
+              </div> 
+            </form>  
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+<hr class="hrcolor">
+<div class="row" >
+  <div class="col-md-12">
+          <ul class="list-group" >
+                  <li class="list-group-item" *ngFor ="let item of Tasks">
+                          <div class="row">
+                                      <div class="col-md-2">
+                                          <label  class="control-label">Task</label>                            
+                                      </div>
+                                      <div class="col-md-3">
+                                          <label  class="control-label">Parent</label>                           
+                                      </div>
+                                      <div class="col-md-1">
+                                          <label  class="control-label">Priority</label>                            
+                                      </div>
+                                      <div class="col-md-2">
+                                          <label  class="control-label">StartDate</label>                             
+                                      </div>
+                                      <div class="col-md-2">
+                                           <label  class="control-label">EndDate</label>                            
+                                      </div>
+                                      <div class="col-md-1">                             
+                                       </div>
+                                        <div class="col-md-1">         
+                                          </div>
+                           </div>
+                           <div class="row">
+                                      <div class="col-md-2">                            
+                                          <label class="control-label form-control input-sm txtColor">{{item.TaskName}}</label>           
+                                      </div>
+                                      <div class="col-md-3">                             
+                                          <label class="control-label form-control input-sm txtColor">{{item.ParentTaskName}}</label>         
+                                      </div>
+                                      <div class="col-md-1">                            
+                                          <label class="control-label form-control input-sm txtColor">{{item.TPriority}}</label>                     
+                                      </div>
+                                      <div class="col-md-2">                            
+                                          <label  class="control-label form-control input-sm txtColor">{{item.TStartDate | date : 'dd/MM/yyyy' }}</label>                     
+                                      </div>
+                                      <div class="col-md-2">                            
+                                          <label  class="control-label form-control input-sm txtColor">{{item.TEndDate | date : 'dd/MM/yyyy' }}</label>                   
+                                      </div>
+                                      <div class="col-md-1">                            
+                                          <td ><button (click)=Edit(item.TaskId) id="Edit" class="buttonwidth" [disabled]="item.TStatus===true">Edit</button></td>                            
+                                          <td><button (click)=EndTask(item.TaskId) id="End" class="buttonwidth btnendwidth" [disabled]="item.TStatus===true">End</button></td> 
+                                          <td><button (click)=Delete(item.TaskId) id="Delete" class="buttonwidth" [disabled]="item.TStatus===false">Delete</button></td>
+                                      </div>
+                           </div>
+                           <hr>          
+                  </li>
+              </ul>
+  </div>
+  
+</div> 
+</div>

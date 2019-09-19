@@ -1,0 +1,93 @@
+.buttonwidth{
+    margin-left:5px;
+    background-color: lightsteelblue;
+    border-radius: 3px;
+    text-align: center;
+    height: 38px;
+}
+.btnAdd{
+    margin-left: 175px;
+    width: 65px;
+}
+.btnreset{
+    margin-left: 25px;
+}
+.btnAdd{
+    margin-left: 175px;
+    width: 65px;
+    /* display: none; */
+}
+.txtColor
+{
+    /* background-color: rgb(224, 232, 235); */
+    background-color: whitesmoke;
+}
+table>tbody>tr>td{
+    border-top:none !important;
+    padding:10px;
+}
+.container{
+    margin-left: 22px;
+    width: 550px;
+}
+ /* .col-md-1{
+    width:  1.333333%;
+}  */
+.col-md-2{
+    padding-left: 0px;
+}
+.row{
+    padding: 10px;
+}
+.parenttask{
+    width: 289px;
+    height: 36px;    
+    padding-top: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    border-radius: 3px;
+}
+.lblcolor{
+    color: red;    
+}
+
+.colmidMargin{
+    padding-right: 0px;
+}
+
+.lblMargin{
+    margin-top: 10px;
+}
+.btnedit{
+    width: 60px;
+}
+.btnsearch{
+    border-radius: 35px;    
+    height: 35px;
+    padding-left: 0px;
+}
+.lblstartend{
+     width: 98px; 
+    padding-right: 0px;
+    padding-left: 14px;   
+}
+
+.endlen{
+    width:50px;
+}
+
+.btnupdate{
+    margin-left: 172px;
+    padding-left: 6px;
+    border-left-width: 2px
+}
+.backdrop{ 
+    background-color:rgba(0,0,0,0.6);
+    /* background-color: none; */
+    position:fixed;  
+    top:0; 
+    left:0;
+    width:100%; 
+    height:100vh; 
+    }

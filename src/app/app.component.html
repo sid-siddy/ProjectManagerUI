@@ -1,0 +1,21 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!DOCTYPE html>
+<html>    
+  <div id="div1" style="text-align:left" style="padding:40px">
+  <!-- <h2 id='user' class='disable' style="color: blue">Add User</h2> -->
+  <!-- <h2 id='project' class='disable' style="color: blue">Add Project</h2>
+  <h2 id='task' class='disable' style="color: blue">Add Task</h2>
+  <h2 id='utask' class='disable' style="color: blue">Update Task</h2>
+  <h2 id='uproject' class='disable' style="color: blue">Update Project</h2>
+  <h2 id='vtask' class='disable' style="color: blue">View Task</h2> -->
+   <h3>{{title}}</h3>  
+   <!-- {{taskid}}  -->
+  <h1>Project Manager</h1> 
+        <a [routerLink]="'/addproject'"  class="txtcolor"  id='addproject'>Add Project </a>       
+        <a [routerLink]="'/addtask'" class=" lftpad txtcolor" id='addtask'>Add Task </a>        
+        <a [routerLink]="'/adduser'" class="lftpad txtcolor" id="adduser">Add User </a>
+        <a [routerLink]="'/viewtask'" class="lftpad txtcolor" id='viewtask'>View Task </a>
+  <router-outlet></router-outlet>
+</div>
+</html>
+

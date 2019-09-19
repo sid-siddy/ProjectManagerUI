@@ -1,0 +1,157 @@
+<div class="container" >
+  <div class="row"  id="projectdiv">
+      <div class="col-md-12">
+          <label  class="control-label lblcolor">{{Recordadded}}</label>
+      </div> 
+    </div>
+    <!-- project name -->
+    <div class="row" id="projectdiv">
+        <div class="col-md-3">
+            <label  class="control-label">Project:</label>
+        </div>       
+          <div class="col-md-9">
+              <input type="text" id='txtProject'  [(ngModel)]="item.ProjectName" required class="form-control input-sm txtColor" >
+          </div>                   
+      </div>
+      <!-- set startdate and end date -->
+      <div class="row" id="projectdiv">
+        <div class="col-md-3">            
+        </div>
+        <div class="col-md-5">
+            <input type="checkbox" id='txtchkbox'>Set Start and EndDate
+         </div>
+         <div class="col-md-2">
+              <input type="date" id='ptxtstartdate' [(ngModel)]="item.PStartDate" value="item.PStartDate" class="form-control input-sm txtColor lblstartend">
+              <input type="text" id='ptxtstartdate1' style="display: none;" readonly  [(ngModel)]="item.PStartDate" value="item.PStartDate" class="form-control input-sm txtColor lblstartend">
+         </div>         
+         <div class="col-md-2">
+              <input type="date" id='ptxtenddate'  [(ngModel)]="item.PEndDate" class="form-control input-sm txtColor lblstartend">
+              <input type="text" id='ptxtenddate1' style="display: none;" readonly [(ngModel)]="item.PEndDate" class="form-control input-sm txtColor lblstartend">
+         </div>
+      </div>
+     <div class="row" id="projectdiv">
+        <div class="col-md-3">
+            <label  class="control-label">Priority:</label>
+        </div>
+        <div class="col-md-9">
+           <input type="range" id='Priority' [(ngModel)]="item.PPriority"  class="form-control input-sm txtColor" min="0" max="30" >
+          
+          </div> 
+      </div> 
+          <!--->
+        <!Model popup-->
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modalfade" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title w-100" id="myModalLabel">Search Users</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">X</span></button>        
+    </div>
+    <div class="modal-body">
+  <form [formGroup]="logedInForm" ng-model="mydata" (ngSubmit) = "mdfLogin(logedInForm.value)"> 
+   <div> 
+      <h5>Users</h5>
+      <div class="row">
+          <div class="col s12 l6">
+              <ngx-select-dropdown (change)="selectionchanged()" id="countryCode"  [(ngModel)] ="objarray" [options]="users" [config]="config" ngDefaultControl [ngModelOptions]="{standalone: true}"></ngx-select-dropdown>
+          </div>        
+      </div> 
+   </div>
+    <div>
+        <input type="submit" class="btn btn-info btn-lg" value="Submit" [disabled] = "!logedInForm.valid">
+    </div>
+  </form> 
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div>
+  <!--End of Model popup-->
+      <!---->  
+      <div class="row" id="projectdiv">
+          <div class="col-md-3">
+              <label  class="control-label">Manager:</label>
+          </div>       
+            <!-- <div class="col-md-7">
+                <input type="text" id='txtManager' [(value)]="objarray" required class="form-control input-sm txtColor">
+            </div>  -->
+            <div class="form-group col-md-7" >               
+             <!-- <ngx-select-dropdown id="drpsearch" [config]="config"  [options]="users"
+         [(value)]="objarray"  ></ngx-select-dropdown>        -->
+          <input type="text" readonly id='txtManager' [(ngModel)]="item.Manager" required class="form-control input-sm txtColor">
+             </div> 
+            <div class="col-md-2">
+                <!-- <button id='btntaskmanagersearch'  class="btnsearch buttonwidth pull-right" data-target="#searchmodal" data-toggle="modal">Search</button> -->
+                <button id='btntaskmanagersearch' type="button"  class="btnsearch buttonwidth" (click)="openModal()">Search</button>
+            </div>                   
+        </div>              
+        <div class="row" id="projectdiv">
+          <div class="col-md-7"></div>            
+            <div class="col-md-5">            
+                <button id='btnadd'(click)="Add()" class="buttonwidth btnAdd"  >Add</button>
+                <button id="btnupdate1" (click)="Update()" class="buttonwidth btnupdate1" style="display: none;">Update</button>
+                <button id="btnreset" (click)="Reset()" class="buttonwidth btnreset">Reset</button>
+            </div>          
+        </div>         
+        <hr class="hrcolor">
+        <div class="row" id="projectdiv">
+        <div class="col-md-12">
+            <input type="text" id='txtSearch' required [(ngModel)]="ProjectName" class="form-control input-sm txtColor" placeholder="Search..." (keyup) = 'Searchbyproject(ProjectName)' [ngModelOptions]="{standalone: true}">
+            <!-- <input type="text" id='txtSearch' [(ngModel)]="item.ProjectName" class="form-control input-sm txtColor" (keyup) = 'Searchbyprojectname(item.ProjectName)' [ngModelOptions]="{standalone: true}" placeholder="Search..."> -->
+          </div>
+        </div>          
+        <div class="row" id="projectdiv">
+            <div class="col-md-2">
+                <label  class="control-label">Sort by:</label>
+            </div>          
+            <div class="col-md-3">
+                <button (click)="StartDate()" class="buttonwidth">Start Date</button>
+            </div>         
+            <div class="col-md-3">
+                <button (click)="EndDate()" class="buttonwidth">End Date</button>
+            </div>         
+            <div class="col-md-1">
+                <button (click)="Priority()" style='margin-left: -12px'class="buttonwidth">Priority</button>
+            </div>          
+            <div class="col-md-3">
+                <button (click)="Completed()" class="buttonwidth btncomplete">Completed</button>
+            </div>          
+        </div>          
+  <div class="row" id="projectdiv">
+      <ul class="list-group col-md-12">
+        <li class="list-group-item" *ngFor ="let item of projects">
+          <div class="row">
+          <div class="col-md-8">             
+           <label  class="control-label form-control input-sm txtColor lblall">
+             Project: {{item.ProjectName}} 
+             <br>
+            <br> 
+            No of tasks: {{item.Nooftasks}} 
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             
+            completed: {{item.completed}}
+            <br>
+            Start Date:{{item.PStartDate| date:'dd/MM/yyyy'}}
+            End Date:{{item.PEndDate| date:'dd/MM/yyyy'}}
+          </label>           
+          </div>    
+          <div class="col-md-2">
+              <label  class="control-label form-control input-sm txtColor lblpriority">
+                  Priority
+                  <br>
+                  {{item.PPriority}}                   
+              </label>           
+          </div>         
+             <div class="col-md-2">
+                <button (click)="Edit(item.ProjectId)" id="btnedit" class="buttonwidth btnupdate" [disabled]="item.Pstatus===true">Update</button>
+                <button (click)="Suspendcontinue(item.ProjectId)" id="btnsuspend" class="buttonwidth btnupdate" [disabled]="item.Pstatus===true">Suspend</button>
+                <button (click)="Suspendcontinue(item.ProjectId)" id="btncontinue" class="buttonwidth btnupdate" [disabled]="item.Pstatus===false">Continue</button>
+               </div> 
+          </div>                  
+        <hr>
+        </li>
+      </ul>      
+    </div>         
+    </div>
